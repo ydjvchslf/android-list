@@ -3,13 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFBFBF"
     android:orientation="horizontal">
+    <!-- List 형태로 줄지어 나오지 않고 한 화면에 하나만 나오는 이유 =>
+     layout_height="match_parent"라서 -> wrap_content로 바꿔주면 됨
+     명확히 하기 위해 background 색깔을 지정해줘서 넣어줘서 확인!!
+     -->
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FF61D3"
+        app:cardBackgroundColor="#FFDEF6"
         app:cardCornerRadius="10dp"
         app:cardElevation="5dp"
         app:cardUseCompatPadding="true">
@@ -21,9 +26,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/ic_baseline_accessibility_24" />
+            <!-- 진짜 이미지 넣을것! drawable 에서 만들 수도 있어!
+                 tools는 프리뷰용이라서 안나올 수 있어;; -->
 
             <LinearLayout
                 android:layout_width="match_parent"

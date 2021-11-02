@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.pm.LabeledIntent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivity"; // log용 태그 생성
 
     PersonAdapter adapter;
 
@@ -19,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Log.d(TAG, " onCreate 실행 ----------------------");
+
+        //id 지정해줬던 recyclerView 찾아서 할당
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         //List 모양 or Grid 모양(table 처럼) 만들어주는 애 : layoutManager -> 세로 방향
@@ -35,18 +41,23 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-        //adapter에 추가한 것을 써주기
+        //추가부분
         adapter.setOnItemClickListener(new OnPersonItemClickListener() {
             @Override
             public void onItemClick(PersonAdapter.ViewHolder holder, View view, int position) {
-                Person item = adapter.getItem(position);
-                showToast("아이템 선택됨 : " + item.getName());
+
+                Log.d(TAG, " oonItemClick 실행");
+
+                Person person = adapter.getItem(position);
+                showToast("아이템 선택됨 => " + person.getName());
             }
         });
-
     }
 
     public void showToast(String data){
+
+        Log.d(TAG, " showToast 실행");
+
         Toast.makeText(this, data, Toast.LENGTH_LONG).show();
     }
 }
